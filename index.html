@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08090d">
+
+    <title>TEAM 403 | Official Website</title>
+
+    <style>
+        /* ==================================
+           TEAM 403 | PHANTOM NEON GLASS
+           ================================== */
+
+        :root {
+            --cyan: #35E7FF;
+            --violet: #A477FF;
+            --pink: #FF4FD8;
+            --white: #F2F6FF;
+
+            /* Transparent glass, not solid black */
+            --glass: rgba(8, 15, 35, 0.08);
+            --glass-border: rgba(100, 220, 255, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "SF Pro Display",
+                "SF Pro Text",
+                "Segoe UI",
+                Tahoma,
+                sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background-color: #050914;
+            background-image: url("team403.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            color: var(--white);
+            line-height: 1.8;
+        }
+
+        /* Emoji use the device's available emoji font */
+        .symbol,
+        button,
+        .emoji {
+            font-family:
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+                "Noto Color Emoji",
+                sans-serif;
+        }
+
+        /* Transparent glass shared by the main surfaces */
+        header,
+        .hero,
+        .section,
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+        }
+
+        /* Header */
+        header {
+            width: min(1100px, calc(100% - 32px));
+            margin: 18px auto;
+            padding: 12px 20px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand {
+            color: var(--cyan);
+            font-size: clamp(17px, 3vw, 24px);
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-shadow: 0 0 16px rgba(53, 231, 255, 0.45);
+        }
+
+        /* Language button */
+        #languageButton {
+            color: var(--white);
+            background: rgba(75, 55, 150, 0.12);
+            border: 1px solid var(--cyan);
+            border-radius: 12px;
+            padding: 8px 16px;
+
+            font: inherit;
+            font-size: 14px;
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        #languageButton:hover {
+            border-color: var(--pink);
+            box-shadow: 0 0 18px rgba(255, 79, 216, 0.30);
+            transform: translateY(-2px);
+        }
+
+        main {
+            width: min(1100px, calc(100% - 32px));
+            margin: 24px auto;
+        }
+
+        /* Main hero */
+        .hero {
+            padding: clamp(28px, 7vw, 72px) 18px;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        .symbol {
+            color: var(--pink);
+            font-size: clamp(30px, 5vw, 48px);
+            text-shadow: 0 0 22px rgba(255, 79, 216, 0.55);
+        }
+
+        h1 {
+            margin: 12px 0;
+            font-size: clamp(42px, 9vw, 86px);
+            line-height: 1.25;
+            font-weight: 900;
+            letter-spacing: 1px;
+
+            background: linear-gradient(
+                100deg,
+                #35E7FF 0%,
+                #A477FF 50%,
+                #FF4FD8 100%
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            filter: drop-shadow(0 0 15px rgba(53, 231, 255, 0.20));
+        }
+
+        .subtitle {
+            color: var(--cyan);
+            font-size: clamp(14px, 3vw, 21px);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px rgba(53, 231, 255, 0.28);
+        }
+
+        .tagline {
+            color: var(--white);
+            font-size: clamp(14px, 2.5vw, 19px);
+            font-weight: 500;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        /* About section */
+        .section {
+            margin-top: 24px;
+            padding: clamp(20px, 4vw, 36px);
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--violet);
+            font-size: clamp(20px, 4vw, 28px);
+            text-shadow: 0 0 14px rgba(164, 119, 255, 0.35);
+        }
+
+        .section > p {
+            color: var(--white);
+            max-width: 700px;
+            margin: 0 auto 24px;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Feature cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .card {
+            padding: 22px 16px;
+            min-width: 0;
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .card:nth-child(1) {
+            border-color: rgba(53, 231, 255, 0.45);
+        }
+
+        .card:nth-child(2) {
+            border-color: rgba(164, 119, 255, 0.45);
+        }
+
+        .card:nth-child(3) {
+            border-color: rgba(255, 79, 216, 0.45);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(53, 231, 255, 0.12);
+        }
+
+        .card h3 {
+            color: var(--cyan);
+            font-size: 19px;
+            overflow-wrap: anywhere;
+        }
+
+        .card:nth-child(2) h3 {
+            color: var(--violet);
+        }
+
+        .card:nth-child(3) h3 {
+            color: var(--pink);
+        }
+
+        .card p {
+            color: var(--white);
+            overflow-wrap: anywhere;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Footer */
+        footer {
+            width: min(1100px, calc(100% - 32px));
+            margin: 24px auto;
+            padding: 20px 12px;
+
+            color: var(--cyan);
+            text-align: center;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+
+            border-top: 1px solid rgba(53, 231, 255, 0.30);
+            text-shadow: 0 0 12px rgba(53, 231, 255, 0.22);
+        }
+
+        /* Selection */
+        ::selection {
+            color: #050914;
+            background: var(--cyan);
+            -webkit-text-fill-color: #050914;
+        }
+
+        /* Arabic layout */
+        html[dir="rtl"] body {
+            text-align: right;
+        }
+
+        html[dir="rtl"] .hero,
+        html[dir="rtl"] .section,
+        html[dir="rtl"] footer {
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            body {
+                background-attachment: scroll;
+                background-position: center center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 12px;
+            }
+
+            .brand {
+                letter-spacing: 0;
+            }
+
+            .hero {
+                padding: 34px 14px;
+            }
+
+            .section {
+                padding: 22px 14px;
+            }
+
+            .card {
+                padding: 16px;
+            }
+        }
+
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+/* TEAM 403 — PHANTOM NEON GLASS CONTACT */
+.contact-section {
+    margin: 55px auto 35px;
+    padding: 30px 20px;
+    width: min(90%, 850px);
+    text-align: center;
+    background: rgba(8, 15, 35, 0.10);
+    border: 1px solid rgba(53, 231, 255, 0.45);
+    border-radius: 24px;
+    box-shadow:
+        0 0 22px rgba(53, 231, 255, 0.12),
+        inset 0 0 24px rgba(164, 119, 255, 0.07);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.contact-section h2 {
+    color: #35E7FF;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    letter-spacing: 2px;
+    text-shadow: 0 0 14px rgba(53, 231, 255, 0.55);
+}
+
+.contact-section p {
+    color: #F2F6FF;
+    line-height: 1.8;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.contact-links a {
+    display: inline-block;
+    padding: 13px 20px;
+    color: #F2F6FF;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid rgba(164, 119, 255, 0.65);
+    border-radius: 14px;
+    background: rgba(164, 119, 255, 0.10);
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+.contact-links a:hover {
+    transform: translateY(-3px);
+    border-color: #35E7FF;
+    box-shadow: 0 0 20px rgba(53, 231, 255, 0.28);
+}
+
+@media (max-width: 480px) {
+    .contact-links {
+        flex-direction: column;
+    }
+
+    .contact-links a {
+        width: auto;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="brand">𓆩 TEAM 403 𓆪</div>
+        <button id="languageButton" type="button">العربية</button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="symbol">𓆩 ⚜ 𓆪</div>
+
+            <h1>𝐓𝐄𝐀𝐌 𝟒𝟎𝟑</h1>
+
+            <p class="subtitle" id="subtitle">
+                CYBER SECURITY • PROGRAMMING
+            </p>
+
+            <p class="tagline" id="tagline">
+                Beyond Limits. Built Different.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 id="aboutTitle">◈ ABOUT TEAM 403 ◈</h2>
+
+            <p id="aboutText">
+                A community driven by technology, creativity and continuous learning.
+            </p>
+
+            <div class="cards">
+                <article class="card">
+                    <h3 id="teamTitle">Our Team</h3>
+                    <p id="teamText">
+                        Discover the identity and vision of TEAM 403.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <h3 id="developerTitle">The Developer</h3>
+                    <p id="developerText">ELIXIR AL-AGNABY</p>
+                </article>
+
+                <article class="card">
+                    <h3 id="botTitle">TEAM 403 BOT</h3>
+                    <p id="botText">
+                        Explore our bot and its future features.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+<section class="contact-section" id="contact">
+    <h2>CONTACT THE 403</h2>
+    <p>Connect with TEAM 403 through our official channels.</p>
+
+    <div class="contact-links">
+        <a href="https://wa.me/message/A3E3CFVMULM4N1"
+           target="_blank" rel="noopener noreferrer">
+            WhatsApp — Official Contact
+        </a>
+
+        <a href="https://t.me/EXR_AGY_403"
+           target="_blank" rel="noopener noreferrer">
+            Telegram — EXR_AGY_403
+        </a>
+    </div>
+</section>
+    <footer id="footerText">
+        𓆩 TEAM 403 𓆪 | CYBER SECURITY • PROGRAMMING
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                button: "العربية",
+                subtitle: "CYBER SECURITY • PROGRAMMING",
+                tagline: "Beyond Limits. Built Different.",
+                aboutTitle: "◈ ABOUT TEAM 403 ◈",
+                aboutText:
+                    "A community driven by technology, creativity and continuous learning.",
+                teamTitle: "Our Team",
+                teamText: "Discover the identity and vision of TEAM 403.",
+                developerTitle: "The Developer",
+                developerText: "ELIXIR AL-AGNABY",
+                botTitle: "TEAM 403 BOT",
+                botText: "Explore our bot and its future features.",
+                contactTitle: "Contact the Leader of TEAM 403 and Developer of This Website",
+whatsappText: "WhatsApp — ELIXIR AL-AGNABY L⁴⁰³D",
+telegramText: "Telegram — EXR_AGY_403",
+            },
+
+            ar: {
+                button: "English",
+                subtitle: "الأمن السيبراني • البرمجة",
+                tagline: "نتجاوز الحدود • نصنع الاختلاف",
+                aboutTitle: "◈ عن تيم 403 ◈",
+                aboutText:
+                    "مجتمع يجمع التكنولوجيا والإبداع والتعلم المستمر.",
+                teamTitle: "فريقنا",
+                teamText: "اكتشف هوية ورؤية TEAM 403.",
+                developerTitle: "المطور",
+                developerText: "اليكسير الأجنبي",
+                botTitle: "بوت TEAM 403",
+                botText: "اكتشف البوت والمميزات القادمة.",
+                contactTitle: "التواصل مع قائد تيم 403 ومطور هذا الموقع",
+whatsappText: "واتساب — اليكسير الاجنبي قائـ⁴⁰³ـد",
+telegramText: "تيليجرام — EXR_AGY_403",
+footer: "𓆩 TEAM 403 𓆪 | الأمن السيبراني • البرمجة"
+            }
+        };
+
+        let language = "en";
+
+        const button = document.getElementById("languageButton");
+
+        button.addEventListener("click", () => {
+            language = language === "en" ? "ar" : "en";
+
+            const t = translations[language];
+
+            document.documentElement.lang = language;
+            document.documentElement.dir =
+                language === "ar" ? "rtl" : "ltr";
+
+            button.textContent = t.button;
+
+            const ids = [
+                "subtitle",
+                "tagline",
+                "aboutTitle",
+                "aboutText",
+                "teamTitle",
+                "teamText",
+                "developerTitle",
+                "developerText",
+                "botTitle",
+                "botText"
+            ];
+
+            ids.forEach(id => {
+                document.getElementById(id).textContent = t[id];
+            });
+
+            document.getElementById("footerText").textContent = t.footer;
+        });
+    </script>
+</body>
+</html>
